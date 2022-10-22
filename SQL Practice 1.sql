@@ -155,7 +155,46 @@ select * from bank_details where loan = 'yes';
 # trying to find out the average balance for all the people whose job role is admin 
 select avg(balance) from bank_details where job = 'admin.';
 
+# trying to find out a record without job whose age is below 45 
+select * from bank_details where job = 'unknown' and age <= 45;
 
+# trying to find out a record where education is primary and person is jobless
+select * from bank_details where education = 'primary' and job = 'unknown';
 
+# trying to find out a record whose bank account is having a negative balance 
+select * from bank_details where balance < 0;
 
+# trying t find out a record who do not have a hourse at all along with there balance 
+select balance, housing from bank_details where housing = 'no';
+
+# creating a procedures which we can use many times 
+DELIMITER && 
+create procedure sudh()
+BEGIN 
+select * from bank_details;
+END &&
+# calling the procedure 
+call sudh()
+
+# creating a procedures with parameter 
+DELIMITER &&
+create procedure avg_bal_jobrolec(IN sudh varchar(30))
+BEGIN 
+select avg(balance) from bank_details where job = sudh;
+END &&
+# calling the procedure 
+call avg_bal_jobrolec('unknown')
+
+# creating a procedures with multiple parameter
+DELIMITER &&
+create procedure sel_edu_job1(in v1 varchar(30), in v2 varchar(30))
+BEGIN
+select * from bank_details where education = v1 and job = v2;
+END && 
+# calling the procedure 
+call sel_edu_job1('tertiary','services');
+
+# Views are used to save subset of table or columns 
+create view bank_view as select age,job,marital,balance, education from bank_details;
+select * from bank_view where job='admin.';
 
