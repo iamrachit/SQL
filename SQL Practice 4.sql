@@ -96,24 +96,7 @@ set @var = @var + 1;
 if @var = 100 then
 	leave generate_data;
 end if;
-end loop genetate_data;
-end &&
-
-create table loop_square1(val int);
-
-create procedure insert_data8()
-Begin
-set @entry = 1;
-gen_data : loop
-insert into loop_square1 (entry)  values (@entry);
-if @entry = @entry * @entry then
-insert into loop_square1 (square) values (@entry);
-end if;
-set @enrty = @entry+1 ;
-if @entry = 100 then
-    leave gen_data ;
-end if ;
-end loop gen_data ;
+end loop generate_data;
 end &&
 
 call insert_data();
