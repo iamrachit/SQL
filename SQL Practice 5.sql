@@ -119,5 +119,5 @@ insert into child values (1,1),(1,2),(3,2),(2,2);
 update parent set id = 3 where id = 2;
 
 # We can use on delete cascade and on update cascade together also by just entering - on delete cascade on update cascade 
-# 
+
 
