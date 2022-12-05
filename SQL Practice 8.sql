@@ -106,4 +106,3 @@ insert into course4 values(101 , 'fsda' , 'full stack data analytics' , 'Analyti
 
 show index from course4;
 
-
