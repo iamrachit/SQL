@@ -1,3 +1,5 @@
+![image](https://user-images.githubusercontent.com/60937657/205946590-f4bb6c12-f1b2-4bd4-95c9-592c9b95b12f.png)
+
 # SQL (Structured Query Language)
 
 ![image](https://user-images.githubusercontent.com/60937657/198875402-9cc6b3c2-95ec-4a6d-a43b-d290ddd4927e.png)
