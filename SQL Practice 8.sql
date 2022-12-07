@@ -104,5 +104,46 @@ insert into course4 values(101 , 'fsda' , 'full stack data analytics' , 'Analyti
 (109 , 'c' , 'c language' , 'c'),
 (108 , 'c++' , 'C++ language' , 'language');
 
-show index from course4;
+show index from course4; 
 
+# In the Unique Index option, only the distinct values of selected column will only be considered
+create table if not exists course6 (
+course_id int ,
+course_name varchar(50),
+course_desc varchar(60),
+course_tag varchar(50),
+unique index(course_desc,course_name)
+);
+
+insert into course6 values(101 , 'fsda' , 'full stack data analytics' , 'Analytics'),
+(102 , 'fsds' , 'full stack data analytics' , 'Analytics'),
+(103 , 'fsds' , 'full stack data science' , 'DS'),
+(104 , 'big data' , 'full stack big data' , 'BD'),
+(105 , 'mern' , 'web dev' , 'mern'),
+(106 , 'blockchain' , 'full stack blockchain' , 'BC'),
+(101 , 'java' , 'full stack java' , 'java'),
+(102 , 'testing' , 'full testing ' , 'testing '),
+(105 , 'cybersecurity' , 'full stack cybersecurity' , 'cybersecurity'),
+(109 , 'c' , 'c language' , 'c'),
+(108 , 'c++' , 'C++ language' , 'language');
+
+show index from course6; 
+
+# Union  - it is used to join the dataset vertically 
+# Join - it is used to join the dataset horizontally alter
+# Condition for union operation is that the number of colunn should be same for the tables where union is being performed 
+select course_id, course_name from course 
+union 
+select student_id, student_name from student;
+
+# CTE - Common table expression 
+# CTE is a run time custome table 
+# CTE is better with respect to clearity when comapred with subquery 
+with sample_students as (
+select * from course where course_id in (101,102,106))
+select * from sample_students where course_tag = 'java';
+
+with outcome_course as 
+(select c.course_id, c.course_name, c.course_desc, s.student_id, s.student_name, s.student_course_id from course c
+cross join student s) 
+select course_id , course_name, student_id from outcome_course where student_id = 301;
