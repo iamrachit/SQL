@@ -1,4 +1,6 @@
-![image](https://user-images.githubusercontent.com/60937657/205946590-f4bb6c12-f1b2-4bd4-95c9-592c9b95b12f.png)
+<div id="header" align="center">
+  <img src="https://media.giphy.com/media/vISmwpBJUNYzukTnVx/giphy.gif" width="300"/>
+</div>
 
 # SQL (Structured Query Language)
 
