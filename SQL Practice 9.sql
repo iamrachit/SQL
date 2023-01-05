@@ -76,17 +76,36 @@ select * from test3;
 # After insert trigger to be performed
 # In the after insert kind of trigger first the insert operation will be performed in test1 table and then the operation defined will be performed
 delimiter //
-create trigger to_update_others_table
+create trigger after_insert_others_table
 after insert on test1 for each row 
 begin
 	update test2 set c1='abc' where c1='xyz';
 	delete from test3 where c1 = 'xyz';
 end; //
 
+# Insert values in test1 table 
 insert into test1 values('krish',sysdate(),9007878);
 
+# Checking the updated values after exicuting trigger 
 select * from test1;
 select * from test2;
+select * from test3;
+
+# After delete trigger being performed 
+delimiter //
+create trigger to_delete_others_table
+after delete on test1 for each row 
+begin
+	insert into test3 values("after delete", sysdate(), 435455);
+end; //
+
+# Checking out values in test1 before we delete value where c1 = 'krish'
+select * from test1;
+
+# Delete value in test1 where c1 = 'krish'
+delete from test1 where c1 = 'krish'
+
+# Checking out the values of test3 table when after delete trigger is performed on the test1 table.
 select * from test3;
 
 
