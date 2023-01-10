@@ -108,4 +108,34 @@ delete from test1 where c1 = 'krish'
 # Checking out the values of test3 table when after delete trigger is performed on the test1 table.
 select * from test3;
 
+# Creating 3 tables for performing operation using trigger
+create table test11(
+c1 varchar(50),
+c2 date,
+c3 int);
+
+create table test12(
+c1 varchar(50),
+c2 date,
+c3 int );
+
+create table test13(
+c1 varchar(50),
+c2 date,
+c3 int );
+
+# before delete trigger being performed 
+delimiter //
+create trigger to_delete_others_before_observation3
+before delete on test11 for each row 
+begin
+	insert into test12(c1,c2,c3) values(old.c1, old.c2,old.c3);
+end; //
+
+insert into test11 values("sudh" , sysdate(), 435456);
+select * from test11;
+
+delete from test11 where c1 = 'sudh';
+
+select * from test12
 
