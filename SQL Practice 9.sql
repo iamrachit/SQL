@@ -124,7 +124,7 @@ c1 varchar(50),
 c2 date,
 c3 int );
 
-# before delete trigger being performed 
+# Before delete trigger being performed 
 delimiter //
 create trigger to_delete_others_before_observation3
 before delete on test11 for each row 
@@ -132,10 +132,38 @@ begin
 	insert into test12(c1,c2,c3) values(old.c1, old.c2,old.c3);
 end; //
 
+# Insert value into test11 for performing above given trigger 
 insert into test11 values("sudh" , sysdate(), 435456);
 select * from test11;
-
+# Deleting a value from test11 
 delete from test11 where c1 = 'sudh';
-
+# Check the result of trigger to_delete_others_before_observation3
 select * from test12
 
+# After update trigger being performed
+delimiter //
+create trigger to_upate_others
+after update on test11 for each row 
+begin
+	insert into test12(c1,c2,c3) values(old.c1, old.c2,old.c3);
+end; //
+
+select * from test11;
+
+insert into test11 values("sudh",sysdate(),234354);
+
+update test11 set c1 = "after update" where c1 = "after delete";
+
+
+select * from  test12;
+
+delimiter //
+create trigger to_upate_others_before
+before update on test11 for each row 
+begin
+	insert into test12(c1,c2,c3) values(new.c1, new.c2,new.c3);
+end; //
+
+update test11 set c1 = "insert new" where c1 = "sudh";
+
+select * from  test12;
