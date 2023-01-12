@@ -147,23 +147,21 @@ after update on test11 for each row
 begin
 	insert into test12(c1,c2,c3) values(old.c1, old.c2,old.c3);
 end; //
-
-select * from test11;
-
+# Insert value in the test11 table for performing trigger operation 
 insert into test11 values("sudh",sysdate(),234354);
-
+# Performing update of c1 value on test11 table 
 update test11 set c1 = "after update" where c1 = "after delete";
-
-
+# Checking the result of trigger 
 select * from  test12;
 
+# Before update trigger being performed 
 delimiter //
 create trigger to_upate_others_before
 before update on test11 for each row 
 begin
 	insert into test12(c1,c2,c3) values(new.c1, new.c2,new.c3);
 end; //
-
+# Update test11 table to perform before update trigger operation 
 update test11 set c1 = "insert new" where c1 = "sudh";
-
+# Checking out the result of before update trigger 
 select * from  test12;
