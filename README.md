@@ -14,7 +14,7 @@ SQL is a domain specific language used in programming and designed for managing 
 
 SQL (Structured Query Language) is a programming language used to manage and manipulate data stored in relational databases. It has various practical applications in different fields, including business, healthcare, education, and government. Here are some practical applications of SQL:
 
--Data management: SQL is widely used for data management in various organizations. It allows users to create, modify, and delete data stored in a database. This is particularly useful for managing large volumes of data that can be accessed and analyzed quickly and easily.
+- Data management: SQL is widely used for data management in various organizations. It allows users to create, modify, and delete data stored in a database. This is particularly useful for managing large volumes of data that can be accessed and analyzed quickly and easily.
 
 Business Intelligence: SQL is used to extract valuable insights from data that can help businesses make better decisions. It can be used to generate reports, analyze data, and create dashboards that provide business intelligence for decision-makers.
 
